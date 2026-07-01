@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "RFQ for Type-C Connectors",
+  title: "Send RFQ for USB Type-C Connectors",
   description:
-    "Send an RFQ to Guangdong Yonghua Technology for Type-C female sockets, USB-C connectors, drawings, samples, and project matching.",
+    "Send an RFQ to Yonghua Technology for USB Type-C female sockets and connectors. Include drawings, pin count, current rating, application, quantity, and sample schedule.",
 };
+
+const rfqChecklist = [
+  "Product drawing, reference model, or PCB footprint",
+  "Pin count: 6Pin, 16Pin, 24Pin, or project-specific requirement",
+  "Mounting type, rated current, shell structure, and application",
+  "Estimated quantity, sample deadline, packing method, and destination market",
+];
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
         eyebrow="RFQ"
-        title="Send a Type-C connector RFQ"
-        description="Share your drawing, product application, pin count, mounting type, rated current, estimated quantity, and target delivery schedule."
+        title="Send a USB Type-C connector RFQ"
+        description="Share your drawing, product application, pin count, mounting type, rated current, estimated quantity, sample timing, and target delivery schedule."
       />
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
         <div className="space-y-6">
@@ -22,29 +30,42 @@ export default function ContactPage() {
             <dl className="mt-6 space-y-5 text-sm">
               <div>
                 <dt className="font-semibold text-slate-950">Company</dt>
-                <dd className="mt-1 text-slate-600">Guangdong Yonghua Technology Co., Ltd.</dd>
+                <dd className="mt-1 text-slate-600">{siteConfig.companyName}</dd>
               </div>
               <div>
                 <dt className="font-semibold text-slate-950">Email</dt>
-                <dd className="mt-1 text-slate-600">sales@yonghuatech.com</dd>
+                <dd className="mt-1 text-slate-600">{siteConfig.email}</dd>
               </div>
               <div>
                 <dt className="font-semibold text-slate-950">Products</dt>
                 <dd className="mt-1 text-slate-600">
-                  Type-C female sockets, USB-C connectors, precision interconnect components
+                  6Pin, 16Pin, and 24Pin USB Type-C female sockets and connectors
                 </dd>
               </div>
             </dl>
           </div>
+
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+            <h2 className="text-xl font-bold text-slate-950">Include these details</h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
+              {rfqChecklist.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <a
-            href="https://wa.me/8613800000000"
-            className="block rounded-lg border border-teal-700 bg-teal-700 p-6 text-white shadow-sm hover:bg-teal-800"
+            href={siteConfig.whatsapp}
+            className="block rounded-lg border border-slate-800 bg-slate-950 p-6 text-white shadow-sm hover:bg-slate-900"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-100">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">
               WhatsApp
             </p>
-            <p className="mt-2 text-xl font-bold">Chat with sales on WhatsApp</p>
-            <p className="mt-2 text-sm text-teal-50">
+            <p className="mt-2 text-xl font-bold">Chat with export sales</p>
+            <p className="mt-2 text-sm text-slate-300">
               Placeholder number. Replace it with the real export sales WhatsApp later.
             </p>
           </a>

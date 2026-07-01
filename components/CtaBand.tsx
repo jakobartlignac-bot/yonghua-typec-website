@@ -14,15 +14,18 @@ export function CtaBand({
   label = "Request a Quote",
 }: CtaBandProps) {
   return (
-    <section className="bg-teal-700">
+    <section className="border-y border-slate-800 bg-[var(--deep-navy)]">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-12 text-white sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
         <div>
-          <h2 className="text-3xl font-bold">{title}</h2>
-          <p className="mt-3 text-teal-50">{description}</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">
+            Fast RFQ Response
+          </p>
+          <h2 className="mt-2 text-3xl font-bold">{title}</h2>
+          <p className="mt-3 max-w-3xl text-slate-300">{description}</p>
         </div>
         <Link
           href={href}
-          className="rounded-md bg-white px-5 py-3 text-sm font-semibold text-teal-800 hover:bg-slate-100"
+          className="btn-primary w-full sm:w-auto"
         >
           {label}
         </Link>

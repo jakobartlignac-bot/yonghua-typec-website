@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { siteConfig } from "@/data/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Guangdong Yonghua Technology | Type-C Connector Manufacturer",
-    template: "%s | Guangdong Yonghua Technology",
+    default: siteConfig.defaultSeoTitle,
+    template: `%s | ${siteConfig.companyName}`,
   },
-  description:
-    "Guangdong Yonghua Technology manufactures Type-C receptacles, Type-C connectors, and precision interconnect components for global electronics buyers.",
-  metadataBase: new URL("https://www.yonghuatech.com"),
+  description: siteConfig.defaultSeoDescription,
+  metadataBase: new URL(siteConfig.siteUrl),
 };
 
 const navigation = [
@@ -18,6 +18,7 @@ const navigation = [
   { href: "/blog", label: "Knowledge" },
   { href: "/solutions", label: "Solutions" },
   { href: "/factory", label: "Factory" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -27,16 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
         <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-            <Link href="/" className="flex flex-col">
-              <span className="text-base font-bold tracking-wide text-slate-950">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:flex-nowrap lg:px-8">
+            <Link href="/" className="min-w-0 flex-1 lg:flex-none">
+              <span className="block truncate text-base font-bold tracking-wide text-slate-950">
                 Yonghua Technology
               </span>
-              <span className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                Precision Connectors
+              <span className="block truncate text-xs uppercase tracking-[0.12em] text-slate-500 sm:tracking-[0.18em]">
+                USB Type-C Connectors
               </span>
             </Link>
             <nav className="hidden items-center gap-7 text-sm font-medium text-slate-700 md:flex">
@@ -48,36 +49,44 @@ export default function RootLayout({
             </nav>
             <Link
               href="/contact"
-              className="rounded-md bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-800"
+              className="btn-primary min-h-10 px-3 py-2 text-xs sm:px-4 sm:text-sm"
             >
-              Send Inquiry
+              RFQ
             </Link>
           </div>
         </header>
         <main>{children}</main>
         <footer className="border-t border-slate-200 bg-slate-950 text-slate-300">
-          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
             <div>
-              <p className="font-semibold text-white">Guangdong Yonghua Technology Co., Ltd.</p>
+              <p className="font-semibold text-white">{siteConfig.companyName}</p>
               <p className="mt-3 text-sm leading-6">
-                Focused on Type-C receptacles, Type-C connectors, and precision connector solutions
-                for overseas electronics supply chains.
+                Factory-direct USB Type-C connector supply for overseas OEM electronics projects,
+                charging accessories, wearables, industrial handhelds, and compact PCB assemblies.
               </p>
             </div>
             <div>
-              <p className="font-semibold text-white">SEO Content Hubs</p>
+              <p className="font-semibold text-white">Products</p>
               <ul className="mt-3 space-y-2 text-sm">
-                <li>Type-C Selection Guides</li>
-                <li>Connector Comparisons</li>
-                <li>Application Solutions</li>
+                <li>6Pin Type-C sockets</li>
+                <li>16Pin Type-C female sockets</li>
+                <li>24Pin Type-C connectors</li>
               </ul>
             </div>
             <div>
-              <p className="font-semibold text-white">Inquiry</p>
+              <p className="font-semibold text-white">Buyer Support</p>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li>Drawing review</li>
+                <li>Sample coordination</li>
+                <li>Application matching</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-white">RFQ</p>
               <p className="mt-3 text-sm leading-6">
-                Email: sales@yonghuatech.com
+                Email: {siteConfig.email}
                 <br />
-                Response: quotation, drawing review, sample support
+                Send: drawing, pin count, current rating, application, quantity
               </p>
             </div>
           </div>

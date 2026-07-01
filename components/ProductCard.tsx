@@ -9,9 +9,9 @@ export function ProductCard({ product }: ProductCardProps) {
   const category = getProductCategory(product.category);
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-teal-600 hover:shadow-md">
+    <article className="industrial-card flex h-full flex-col overflow-hidden rounded-lg">
       <div className="flex aspect-[4/3] items-center justify-center border-b border-slate-200 bg-slate-50 p-6">
-        <img src={product.image} alt={product.name} className="h-full max-h-36 w-auto" />
+        <img src={product.image} alt={product.imageAlt} className="h-full max-h-36 w-auto" />
       </div>
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2">
@@ -32,30 +32,30 @@ export function ProductCard({ product }: ProductCardProps) {
             <dd className="font-semibold text-slate-900">{product.pinCount}</dd>
           </div>
           <div className="bg-white p-3">
-            <dt className="text-xs text-slate-500">Current</dt>
+            <dt className="text-xs text-slate-500">Mounting</dt>
+            <dd className="font-semibold text-slate-900">{product.mountingType}</dd>
+          </div>
+          <div className="bg-white p-3">
+            <dt className="text-xs text-slate-500">Rated Current</dt>
             <dd className="font-semibold text-slate-900">{product.ratedCurrent}</dd>
           </div>
           <div className="bg-white p-3">
-            <dt className="text-xs text-slate-500">Sample</dt>
-            <dd className="font-semibold text-slate-900">{product.sampleLeadTime}</dd>
-          </div>
-          <div className="bg-white p-3">
-            <dt className="text-xs text-slate-500">MOQ</dt>
-            <dd className="font-semibold text-slate-900">{product.moq}</dd>
+            <dt className="text-xs text-slate-500">Application</dt>
+            <dd className="font-semibold text-slate-900">{product.applications[0]}</dd>
           </div>
         </dl>
-        <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+        <div className="mt-auto flex flex-col gap-3 pt-5 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href={`/products/${product.slug}`}
-            className="text-sm font-semibold text-slate-800 hover:text-teal-800"
+            className="btn-secondary px-3.5 py-2"
           >
-            View specs
+            View Specs
           </Link>
           <Link
             href="/contact"
-            className="rounded-md bg-teal-700 px-3.5 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+            className="btn-primary px-3.5 py-2"
           >
-            RFQ
+            Get Quote
           </Link>
         </div>
       </div>

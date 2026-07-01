@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f8fa;
-  --foreground: #17202a;
+  --deep-navy: #0F172A;
+  --industrial-blue: #1E3A8A;
+  --steel-gray: #64748B;
+  --light-background: #F8FAFC;
+  --cta-teal: #0F766E;
+  --background: var(--light-background);
+  --foreground: var(--deep-navy);
+  --border-subtle: #E2E8F0;
+  --card-background: #FFFFFF;
 }
 
 html {
@@ -15,6 +22,84 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+section {
+  scroll-margin-top: 88px;
+}
+
 a {
   text-decoration: none;
+}
+
+::selection {
+  background: var(--cta-teal);
+  color: white;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+.section-spacing {
+  padding-block: 4rem;
+}
+
+.industrial-card {
+  border: 1px solid var(--border-subtle);
+  background: var(--card-background);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.industrial-card:hover {
+  border-color: var(--cta-teal);
+  box-shadow: 0 14px 30px rgb(15 23 42 / 0.10);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: var(--cta-teal);
+  padding: 0.75rem 1.25rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+}
+
+.btn-primary:hover {
+  background: #115E59;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px solid #CBD5E1;
+  padding: 0.75rem 1.25rem;
+  color: var(--deep-navy);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+}
+
+.btn-secondary:hover {
+  border-color: var(--cta-teal);
+  color: var(--cta-teal);
+}
+
+@media (max-width: 640px) {
+  .section-spacing {
+    padding-block: 3rem;
+  }
 }

@@ -37,10 +37,23 @@ export type Product = {
   applicationScenarios: ProductApplicationScenario[];
   description: string;
   image: string;
+  imageAlt: string;
   seoTitle: string;
   seoDescription: string;
+  keywords: string[];
   sampleLeadTime: string;
   moq: string;
+  datasheetUrl: string;
+  drawingUrl: string;
+  certifications: string[];
+  materials: string;
+  plating: string;
+  lifecycle: string;
+  operatingTemperature: string;
+  features: string[];
+  selectionNotes: string[];
+  relatedArticles: string[];
+  relatedProducts: string[];
   parameters: ProductParameter[];
   comparisonTitle: string;
   comparisonAlternative: string;
@@ -94,13 +107,42 @@ export const products: Product[] = [
       },
     ],
     description:
-      "Cost-sensitive SMT Type-C 6 pin female charging socket for simple power products and high-volume accessory manufacturing.",
+      "This USB Type-C 6 pin female charging socket is built for cost-sensitive products that need a stable power input interface without full USB-C signal functions. It suits charging cables, compact accessories, small power devices, and entry-level consumer electronics where SMT assembly, predictable footprint confirmation, and repeatable high-volume supply are more important than complex data transmission capability.",
     image: "/products/precision-connector.svg",
+    imageAlt: "USB Type-C 6 pin female charging socket for SMT power input",
     seoTitle: "USB Type-C 6 Pin Female Charging Socket Supplier",
     seoDescription:
       "Source USB Type-C 6 pin female charging sockets for accessories, small power devices, and cost-sensitive OEM electronics.",
+    keywords: [
+      "USB Type-C 6 pin female socket",
+      "6 pin Type-C charging socket",
+      "Type-C female socket supplier",
+    ],
     sampleLeadTime: "3-7 days",
     moq: "Volume-based",
+    datasheetUrl: "/contact",
+    drawingUrl: "/contact",
+    certifications: ["RoHS support", "REACH support"],
+    materials: "Copper alloy terminal, high-temperature plastic housing, stainless steel shell",
+    plating: "Tin or gold flash options based on project requirement",
+    lifecycle: "Project-based lifecycle with repeat order support",
+    operatingTemperature: "-25°C to +85°C",
+    features: [
+      "6 pin simplified Type-C interface for charging-focused products",
+      "SMT structure suitable for compact PCB layouts",
+      "Cost-sensitive option for high-volume accessory production",
+      "Drawing and footprint review available before sample confirmation",
+    ],
+    selectionNotes: [
+      "Choose this model when the product only needs a simple charging interface.",
+      "Confirm whether the PCB layout and shell height match the enclosure before sample approval.",
+      "Do not use a 6 pin socket for products that require complete USB-C signal support.",
+    ],
+    relatedArticles: [
+      "products-use-type-c-6pin-female-connectors",
+      "type-c-6pin-vs-16pin-vs-24pin",
+    ],
+    relatedProducts: ["usb-type-c-16-pin-female-socket", "usb-type-c-24-pin-mid-mount-connector"],
     parameters: [
       { label: "Connector Type", value: "USB Type-C female charging socket" },
       { label: "Pin Count", value: "6 Pin" },
@@ -171,13 +213,46 @@ export const products: Product[] = [
       },
     ],
     description:
-      "Compact SMT Type-C female socket designed for stable charging and signal connection in high-volume electronics manufacturing.",
+      "This USB Type-C 16 pin female socket is designed for consumer electronics, charging accessories, and portable devices that need a reliable Type-C receptacle with balanced cost and function. It supports SMT assembly, 3A current options, drawing review, and PCB footprint confirmation for OEM buyers preparing samples and repeat production orders.",
     image: "/products/type-c-16-pin.svg",
+    imageAlt: "USB Type-C 16 pin female socket for consumer electronics",
     seoTitle: "USB Type-C 16 Pin Female Socket Manufacturer",
     seoDescription:
       "Source USB Type-C 16 pin female sockets from Guangdong Yonghua Technology for consumer electronics and charging accessories.",
+    keywords: [
+      "USB Type-C 16 pin female socket",
+      "16 pin Type-C female socket manufacturer",
+      "Type-C receptacle supplier",
+    ],
     sampleLeadTime: "3-7 days",
     moq: "Volume-based",
+    datasheetUrl: "/contact",
+    drawingUrl: "/contact",
+    certifications: ["RoHS support", "REACH support", "CE support"],
+    materials: "Copper alloy contacts, LCP housing, stainless steel shell",
+    plating: "Tin plating or selective gold plating options",
+    lifecycle: "Stable model for repeat OEM sourcing",
+    operatingTemperature: "-25°C to +85°C",
+    features: [
+      "16 pin Type-C female socket for charging and simplified interface designs",
+      "SMT mounting for automated PCB assembly",
+      "Suitable for high-volume consumer electronics production",
+      "Drawing, sample, and PCB footprint support available",
+    ],
+    selectionNotes: [
+      "Choose 16 pin when the device does not require every USB-C function.",
+      "Confirm current rating, shell retention, and PCB footprint before tooling release.",
+      "For more complete signal support, compare with a 24 pin USB-C connector.",
+    ],
+    relatedArticles: [
+      "products-use-type-c-16pin-female-connectors",
+      "type-c-6pin-vs-16pin-vs-24pin",
+      "type-c-connector-manufacturer-selection-guide",
+    ],
+    relatedProducts: [
+      "usb-type-c-6-pin-female-charging-socket",
+      "usb-type-c-24-pin-mid-mount-connector",
+    ],
     parameters: [
       { label: "Connector Type", value: "USB Type-C female receptacle" },
       { label: "Pin Count", value: "16 Pin" },
@@ -248,13 +323,42 @@ export const products: Product[] = [
       },
     ],
     description:
-      "Mid-mount 24 pin Type-C connector for thin device designs requiring reliable mechanical strength and high current capability.",
+      "This USB Type-C 24 pin mid-mount connector is intended for thin devices, tablets, industrial handhelds, and higher-specification electronics that need more complete USB-C interface support. The mid-mount SMT structure helps control connector height while maintaining reliable mechanical strength, 5A current options, and engineering review before PCB release.",
     image: "/products/type-c-24-pin.svg",
+    imageAlt: "USB Type-C 24 pin mid-mount connector for thin electronics",
     seoTitle: "USB Type-C 24 Pin Mid-Mount Connector Supplier",
     seoDescription:
       "Find 24 pin mid-mount USB Type-C connectors for laptops, tablets, and industrial devices from a China connector factory.",
+    keywords: [
+      "USB Type-C 24 pin connector",
+      "24 pin USB-C connector supplier",
+      "mid-mount Type-C connector",
+    ],
     sampleLeadTime: "3-7 days",
     moq: "Volume-based",
+    datasheetUrl: "/contact",
+    drawingUrl: "/contact",
+    certifications: ["RoHS support", "REACH support", "CE support"],
+    materials: "Copper alloy terminal, LCP housing, stainless steel shell",
+    plating: "Selective gold plating or tin plating according to project requirement",
+    lifecycle: "Stable supply for qualified OEM programs",
+    operatingTemperature: "-25°C to +85°C",
+    features: [
+      "24 pin USB-C interface for higher-specification product designs",
+      "Mid-mount SMT structure for thinner device layouts",
+      "5A current options for demanding charging applications",
+      "Engineering review recommended before PCB release",
+    ],
+    selectionNotes: [
+      "Choose 24 pin when broader USB-C signal support is required.",
+      "Check connector height, shell position, and PCB cutout early in the mechanical design.",
+      "Confirm rated current and thermal requirement with the complete product system.",
+    ],
+    relatedArticles: [
+      "when-choose-24pin-usb-c-connector",
+      "what-is-mid-mount-type-c-connector",
+    ],
+    relatedProducts: ["usb-type-c-16-pin-female-socket", "waterproof-type-c-female-connector"],
     parameters: [
       { label: "Connector Type", value: "USB Type-C connector" },
       { label: "Pin Count", value: "24 Pin" },
@@ -325,13 +429,42 @@ export const products: Product[] = [
       },
     ],
     description:
-      "Waterproof Type-C female connector options for devices that need stronger sealing, stable soldering, and durable mating cycles.",
+      "This waterproof Type-C 24 pin female connector is designed for products that need stronger sealing, reinforced shell review, stable SMT soldering, and reliable mating in outdoor or harsh-use environments. It is suitable for smart wearables, industrial controls, sealed modules, and electronics where the connector, housing, and waterproof structure must be evaluated together.",
     image: "/products/waterproof-type-c.svg",
+    imageAlt: "Waterproof Type-C 24 pin female connector with reinforced shell",
     seoTitle: "Waterproof Type-C Female Connector Factory",
     seoDescription:
       "Waterproof Type-C female connectors for outdoor electronics, wearable products, and industrial control applications.",
+    keywords: [
+      "waterproof Type-C connector",
+      "waterproof USB-C female connector",
+      "24 pin waterproof Type-C socket",
+    ],
     sampleLeadTime: "5-10 days",
     moq: "Project-based",
+    datasheetUrl: "/contact",
+    drawingUrl: "/contact",
+    certifications: ["RoHS support", "REACH support", "CE support"],
+    materials: "Copper alloy contacts, LCP housing, reinforced stainless steel shell",
+    plating: "Selective gold plating options for contact reliability",
+    lifecycle: "Project-based lifecycle with application review",
+    operatingTemperature: "-25°C to +85°C",
+    features: [
+      "Waterproof structure for products exposed to moisture or dust",
+      "24 pin USB-C interface with reinforced shell support",
+      "Suitable for wearables, outdoor electronics, and industrial control products",
+      "Housing, sealing, and connector drawing review recommended",
+    ],
+    selectionNotes: [
+      "Choose waterproof models only when the product environment justifies the extra structure.",
+      "Review connector, shell, gasket, housing, and assembly method together.",
+      "Confirm waterproof requirement, insertion life, and current rating before sample approval.",
+    ],
+    relatedArticles: [
+      "what-is-waterproof-type-c-female-connector",
+      "type-c-connector-for-industrial-control-boards",
+    ],
+    relatedProducts: ["usb-type-c-24-pin-mid-mount-connector", "usb-type-c-16-pin-female-socket"],
     parameters: [
       { label: "Connector Type", value: "Waterproof USB Type-C female connector" },
       { label: "Pin Count", value: "24 Pin" },
