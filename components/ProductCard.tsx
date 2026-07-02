@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getProductCategory, type Product } from "@/data/products";
 
@@ -11,7 +12,13 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <article className="industrial-card flex h-full flex-col overflow-hidden rounded-lg">
       <div className="flex aspect-[4/3] items-center justify-center border-b border-slate-200 bg-slate-50 p-6">
-        <img src={product.image} alt={product.imageAlt} className="h-full max-h-36 w-auto" />
+        <Image
+          src={product.image}
+          alt={product.imageAlt}
+          width={320}
+          height={240}
+          className="h-full max-h-36 w-auto"
+        />
       </div>
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2">

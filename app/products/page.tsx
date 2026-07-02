@@ -3,19 +3,13 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getProductCategories, getProductsByCategory } from "@/data/products";
+import { getProductCategories, getProductsByCategory, productHubContent } from "@/data/products";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "USB Type-C Connector Products | 6Pin 16Pin 24Pin Factory Supply",
-  description:
-    "Browse Yonghua Type-C connector products by 6Pin, 16Pin, and 24Pin categories with specs, applications, sample support, and RFQ information for overseas buyers.",
+  title: `${productHubContent.seoTitle} | ${siteConfig.companyName}`,
+  description: productHubContent.seoDescription,
 };
-
-const landingPoints = [
-  "Factory direct Type-C connector sourcing for OEM electronics projects.",
-  "Product pages include pin count, current rating, mounting type, applications, and buyer notes.",
-  "Request drawings, datasheets, samples, and quotation support before bulk order confirmation.",
-];
 
 export default function ProductsPage() {
   const categories = getProductCategories();
@@ -23,9 +17,9 @@ export default function ProductsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Products"
-        title="USB Type-C connector products by 6Pin, 16Pin, and 24Pin category"
-        description="Use this product hub to shortlist Type-C female sockets and connectors by pin count, electrical requirement, structure, application, sample timing, and RFQ readiness."
+        eyebrow={productHubContent.hero.eyebrow}
+        title={productHubContent.hero.title}
+        description={productHubContent.hero.description}
       />
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
@@ -35,7 +29,7 @@ export default function ProductsPage() {
             description="Overseas buyers can compare product categories before sending drawings and quantity details for quotation."
           />
           <div className="grid gap-4 sm:grid-cols-3">
-            {landingPoints.map((point) => (
+            {productHubContent.landingPoints.map((point) => (
               <div key={point} className="industrial-card rounded-lg bg-slate-50 p-5">
                 <p className="text-sm leading-6 text-slate-700">{point}</p>
               </div>
@@ -93,17 +87,16 @@ export default function ProductsPage() {
         <div className="mt-14 rounded-lg border border-slate-800 bg-slate-950 p-8 text-white">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-2xl font-bold">Need help matching a connector model?</h2>
+              <h2 className="text-2xl font-bold">{productHubContent.cta.title}</h2>
               <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300">
-                Send drawings, PCB footprint, current rating, application, expected order quantity,
-                and target market. Yonghua can help check model fit before sample confirmation.
+                {productHubContent.cta.description}
               </p>
             </div>
             <Link
               href="/contact"
               className="btn-primary"
             >
-              Send Product RFQ
+              {productHubContent.cta.label}
             </Link>
           </div>
         </div>

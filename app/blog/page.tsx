@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ArticleCard } from "@/components/ArticleCard";
 import { PageHero } from "@/components/PageHero";
 import { articles, getArticleCategories } from "@/data/articles";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Type-C Connector GEO Answer Hub",
+  title: `Type-C Connector Knowledge Hub | ${siteConfig.companyName}`,
   description:
-    "GEO answer hub for Type-C connector buyers comparing pin count, PCB design, applications, quality tests, and China supplier selection.",
+    "Knowledge hub for Type-C connector buyers comparing pin count, PCB design, applications, quality tests, and China supplier selection.",
 };
 
 export default function BlogPage() {
@@ -15,7 +16,7 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        eyebrow="GEO Answer Hub"
+        eyebrow="Knowledge Hub"
         title="Type-C connector sourcing answers for buyers and engineers"
         description="Find direct answers about Type-C female connectors, 6Pin / 16Pin / 24Pin differences, PCB selection, applications, factory sourcing, and RFQ preparation."
       />
@@ -51,39 +52,7 @@ export default function BlogPage() {
                 </div>
                 <div className="mt-6 grid gap-6 md:grid-cols-2">
                   {categoryArticles.map((article) => (
-                    <article
-                      key={article.slug}
-                      className="flex flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm hover:border-teal-600"
-                    >
-                      <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-                        <span className="text-teal-700">{article.category}</span>
-                        <span>{article.readingTime}</span>
-                      </div>
-                      <h3 className="mt-3 text-2xl font-bold text-slate-950">
-                        <Link href={`/blog/${article.slug}`}>{article.title}</Link>
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-slate-600">{article.excerpt}</p>
-                      <div className="mt-5 rounded-md border border-slate-200 bg-slate-50 p-4">
-                        <p className="text-sm font-semibold text-slate-950">Direct Answer</p>
-                        <p className="mt-2 text-sm leading-6 text-slate-700">{article.answerSummary}</p>
-                      </div>
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {article.targetKeywords.map((keyword) => (
-                          <span
-                            key={keyword}
-                            className="rounded bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700"
-                          >
-                            {keyword}
-                          </span>
-                        ))}
-                      </div>
-                      <Link
-                        href={`/blog/${article.slug}`}
-                        className="mt-auto inline-flex pt-5 text-sm font-semibold text-teal-700 hover:text-teal-900"
-                      >
-                        Read answer page
-                      </Link>
-                    </article>
+                    <ArticleCard key={article.slug} article={article} />
                   ))}
                 </div>
               </section>

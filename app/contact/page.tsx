@@ -1,27 +1,20 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
+import { contactPageContent } from "@/data/contact";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Send RFQ for USB Type-C Connectors",
-  description:
-    "Send an RFQ to Yonghua Technology for USB Type-C female sockets and connectors. Include drawings, pin count, current rating, application, quantity, and sample schedule.",
+  title: `${contactPageContent.seoTitle} | ${siteConfig.companyName}`,
+  description: contactPageContent.seoDescription,
 };
-
-const rfqChecklist = [
-  "Product drawing, reference model, or PCB footprint",
-  "Pin count: 6Pin, 16Pin, 24Pin, or project-specific requirement",
-  "Mounting type, rated current, shell structure, and application",
-  "Estimated quantity, sample deadline, packing method, and destination market",
-];
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="RFQ"
-        title="Send a USB Type-C connector RFQ"
-        description="Share your drawing, product application, pin count, mounting type, rated current, estimated quantity, sample timing, and target delivery schedule."
+        eyebrow={contactPageContent.hero.eyebrow}
+        title={contactPageContent.hero.title}
+        description={contactPageContent.hero.description}
       />
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
         <div className="space-y-6">
@@ -48,7 +41,7 @@ export default function ContactPage() {
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
             <h2 className="text-xl font-bold text-slate-950">Include these details</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
-              {rfqChecklist.map((item) => (
+              {contactPageContent.rfqChecklist.map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
                   <span>{item}</span>
@@ -66,7 +59,7 @@ export default function ContactPage() {
             </p>
             <p className="mt-2 text-xl font-bold">Chat with export sales</p>
             <p className="mt-2 text-sm text-slate-300">
-              Placeholder number. Replace it with the real export sales WhatsApp later.
+              {contactPageContent.whatsappNote}
             </p>
           </a>
         </div>
@@ -126,13 +119,12 @@ export default function ContactPage() {
           </label>
           <button
             type="button"
-            className="mt-6 rounded-md bg-teal-700 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-800"
+            className="btn-primary mt-6"
           >
             Submit RFQ
           </button>
           <p className="mt-4 text-xs leading-5 text-slate-500">
-            Static form placeholder. It can be connected later to WordPress, CRM, email, or a form
-            backend.
+            {contactPageContent.formNote}
           </p>
         </form>
       </section>

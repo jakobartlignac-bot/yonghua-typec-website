@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -11,6 +12,8 @@ import { ProductSpecTable } from "@/components/ProductSpecTable";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { getArticleBySlug } from "@/data/articles";
 import { getProductBySlug, getProductCategory, products, type ProductParameter } from "@/data/products";
+import { siteConfig } from "@/data/site";
+import { getSolutionBySlug } from "@/data/solutions";
 
 type ProductDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -53,6 +56,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const relatedProducts = product.relatedProducts
     .map((productSlug) => getProductBySlug(productSlug))
     .filter((relatedProduct) => relatedProduct !== undefined);
+  const relatedSolutions = product.relatedSolutions
+    .map((solutionSlug) => getSolutionBySlug(solutionSlug))
+    .filter((solution) => solution !== undefined);
 
   const technicalSpecifications: ProductParameter[] = [
     ...product.parameters,
@@ -67,15 +73,15 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    description: product.seoDescription,
+    description: product.intro,
     category: category?.label ?? product.pinCount,
     brand: {
       "@type": "Brand",
-      name: "Guangdong Yonghua Technology",
+      name: siteConfig.companyName,
     },
     manufacturer: {
       "@type": "Organization",
-      name: "Guangdong Yonghua Technology Co., Ltd.",
+      name: siteConfig.companyName,
     },
     additionalProperty: technicalSpecifications.map((parameter) => ({
       "@type": "PropertyValue",
@@ -115,7 +121,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           </div>
           <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-8 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
             <div className="flex aspect-[4/3] items-center justify-center rounded-lg border border-slate-700 bg-slate-900 p-8">
-              <img src={product.image} alt={product.imageAlt} className="h-full max-h-80 w-auto" />
+              <Image
+                src={product.image}
+                alt={product.imageAlt}
+                width={520}
+                height={390}
+                className="h-full max-h-80 w-auto"
+                priority
+              />
             </div>
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">
@@ -124,7 +137,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               <h1 className="mt-4 text-4xl font-bold tracking-tight text-white">
                 {product.name} | {coreKeyword}
               </h1>
-              <p className="mt-5 text-lg leading-8 text-slate-300">{product.description}</p>
+              <p className="mt-5 text-lg leading-8 text-slate-300">{product.intro}</p>
               <dl className="mt-6 grid gap-px overflow-hidden rounded-lg border border-slate-700 bg-slate-700 text-sm sm:grid-cols-3">
                 <div className="bg-slate-900 p-4">
                   <dt className="text-slate-400">Sample Lead Time</dt>
@@ -261,6 +274,17 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               href: `/blog/${article.slug}`,
               description: article.excerpt,
               meta: article.category,
+            }))}
+          />
+
+          <RelatedLinks
+            eyebrow="Related Solutions"
+            title="Application pages connected to this product"
+            links={relatedSolutions.map((solution) => ({
+              title: `${solution.industry} Type-C Connector Solution`,
+              href: `/solutions/${solution.slug}`,
+              description: solution.description,
+              meta: "Application Solution",
             }))}
           />
 
